@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RBM Luxury Salon - Book</title>
+<style>
+/* =============================
+   GENERAL
+============================= */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #000;
+  color: #fff;
+  scroll-behavior: smooth;
+}
+* { box-sizing: border-box; }
+a { text-decoration: none; color: #a78a51; }
+a:hover { color: #fff; }
+
+/* =============================
+   HEADER & NAVIGATION
+============================= */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background: #111;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(167,138,81,0.3);
+}
+header .logo-container .logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #a78a51;
+  text-shadow: 0 0 15px #a78a51, 0 0 30px #a78a51;
+}
+header nav a {
+  margin-left: 20px;
+  position: relative;
+  transition: color 0.3s;
+}
+header nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #a78a51;
+  transition: width 0.3s ease;
+}
+header nav a:hover { color: #a78a51; }
+header nav a:hover::after { width: 100%; }
+
+/* =============================
+   BOOK PAGE
+============================= */
+.book-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 20px;
+}
+
+/* GLOWING TITLE BOX */
+.book-page .book-title-box {
+  width: 100%;
+  max-width: 900px;
+  height: 120px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 40px #a78a51, 0 0 80px #a78a51;
+  font-size: 36px;
+  color: #a78a51;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  background-size: cover;
+  background-position: center;
+}
+.book-page .book-title-box:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 60px #a78a51, 0 0 120px #a78a51;
+}
+
+/* BIG GLOWING BOX BEHIND BOOK SECTION */
+.book-box {
+  width: 100%;
+  max-width: 900px;
+  height: 400px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 0 40px #a78a51, 0 0 80px #a78a51;
+  transition: transform 0.3s, box-shadow 0.3s;
+  background-size: cover;
+  background-position: center;
+}
+.book-box:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 60px #a78a51, 0 0 120px #a78a51;
+}
+
+/* SOCIAL BUTTONS */
+.book-page .social-button {
+  display: inline-block;
+  padding: 15px 25px;
+  margin: 10px 0;
+  font-size: 20px;
+  color: #fff;
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+.book-page .whatsapp { background: #25D366; box-shadow: 0 0 20px #25D366; }
+.book-page .tiktok { background: #000; color: #fff; box-shadow: 0 0 20px #FF0050; }
+.book-page .instagram { background: #C13584; box-shadow: 0 0 20px #C13584; }
+
+.book-page .social-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px currentColor;
+}
+
+/* Contact Info */
+.book-page .contact-info {
+  margin-top: 20px;
+  text-align: center;
+}
+.book-page .contact-info p {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+/* Timing Table */
+.book-page .timing-title {
+  display: inline-block;
+  padding: 10px 20px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  box-shadow: 0 0 20px #a78a51, 0 0 40px #a78a51;
+  margin: 20px 0;
+  font-size: 24px;
+  color: #a78a51;
+  text-align: center;
+}
+
+.book-page table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 0 20px #a78a51;
+  margin-bottom: 50px;
+}
+.book-page table th, .book-page table td {
+  padding: 12px;
+  border: 1px solid #a78a51;
+  font-size: 18px;
+  color: #fff;
+}
+.book-page table th {
+  background: rgba(255,255,255,0.05);
+}
+
+/* Footer Info */
+.book-page .footer-info {
+  text-align: center;
+  font-size: 16px;
+  color: #a78a51;
+  margin-top: 50px;
+}
+.book-page .footer-info p {
+  margin: 5px 0;
+}
+
+/* =============================
+   RESPONSIVE
+============================= */
+@media(max-width:768px){
+  .book-page .book-title-box { height: 100px; font-size: 28px; }
+  .book-box { height: 300px; }
+  .book-page .social-button { font-size: 18px; padding: 12px 20px; }
+  .book-page table { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-container">
+    <div class="logo">RBM Luxury Salon</div>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="book.html">Book</a>
+  </nav>
+</header>
+
+<section class="book-page">
+
+  <!-- GLOWING TITLE BOX -->
+  <div class="book-title-box">Book Your Appointment</div>
+
+  <!-- BIG GLOWING BOX -->
+  <div class="book-box">
+    <a href="https://wa.me/96181554266" target="_blank" class="social-button whatsapp">WhatsApp</a>
+    <a href="https://www.tiktok.com/@rbmsalon" target="_blank" class="social-button tiktok">TikTok</a>
+    <a href="https://www.instagram.com/rbmsalon" target="_blank" class="social-button instagram">Instagram</a>
+
+    <div class="contact-info">
+      <p>Phone: +961 81 554 266</p>
+      <p>Email: info@rbmsalon.com</p>
+      <p>Address: Beirut, Lebanon</p>
+    </div>
+  </div>
+
+  <div class="timing-title">Salon Opening Hours</div>
+  <table>
+    <tr><th>Day</th><th>Open</th><th>Close</th></tr>
+    <tr><td>Tuesday</td><td>9:00 AM</td><td>8:00 PM</td></tr>
+    <tr><td>Wednesday</td><td>9:00 AM</td><td>8:00 PM</td></tr>
+    <tr><td>Thursday</td><td>9:00 AM</td><td>8:00 PM</td></tr>
+    <tr><td>Friday</td><td>9:00 AM</td><td>8:00 PM</td></tr>
+    <tr><td>Saturday</td><td>9:00 AM</td><td>8:00 PM</td></tr>
+    <tr><td>Sunday</td><td>9:00 AM</td><td>8:00 PM</td></tr>
+  </table>
+
+  <div class="footer-info">
+    <p>Website made on 1/1/2026 by @Simon Hawat (+961 81 554 266)</p>
+  </div>
+</section>
+<!-- ADD THIS AT THE END OF YOUR BODY, AFTER THE OPENING HOURS TABLE -->
+
+<!-- FOOTER -->
+<footer style="text-align:center; padding:20px; color:#a78a51; font-size:16px; text-shadow:0 0 10px #a78a51; background:#111;">
+  Website made on 1/1/2026 by @Simon Hawat (+961 81 554 266)
+</footer>
+
+</body>
+</html>
