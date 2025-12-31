@@ -323,3 +323,75 @@ header nav a:hover::after { width: 100%; }
   .services-page .heading-board h2 { font-size:32px; }
   .book-page form { width:100%; }
 }
+/* Services page adjustments */
+.services-page .service-card {
+  width: 300px;
+  min-height: 250px; /* Longer boxes */
+  background: rgba(255,255,255,0.05);
+  padding: 25px;
+  margin: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #a78a51;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.services-page .service-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px #a78a51, 0 0 60px #a78a51;
+}
+
+.services-page .service-card .service-logo {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+.services-page .vip-title-board {
+  width: 100%;
+  max-width: 500px;
+  height: 100px;
+  margin: 40px 0 20px 0;
+  background: rgba(255,255,255,0.05); /* Replace with picture if needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 30px #a78a51, 0 0 60px #a78a51;
+}
+
+.services-page .vip-title-board h2 {
+  font-size: 36px;
+  color: #a78a51;
+  text-shadow: 0 0 20px #a78a51, 0 0 40px #a78a51;
+}
+
+.services-page .vip-card {
+  width: 300px;
+  min-height: 200px;
+  background: rgba(255,255,255,0.05);
+  padding: 25px;
+  margin: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #a78a51;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.services-page .vip-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px #a78a51, 0 0 60px #a78a51;
+}
+
+.services-page .vip-card .vip-logo {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+}

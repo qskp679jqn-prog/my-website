@@ -19,11 +19,11 @@ body {
 a { text-decoration: none; color: #fff; }
 
 /* =============================
-   HEADER & NAVIGATION
+   HEADER
 ============================= */
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 20px 30px;
   background: #111;
@@ -38,23 +38,6 @@ header .logo-container .logo {
   color: #a78a51;
   text-shadow: 0 0 15px #a78a51, 0 0 30px #a78a51;
 }
-header nav a {
-  margin-left: 20px;
-  position: relative;
-  transition: color 0.3s;
-}
-header nav a::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -5px;
-  left: 0;
-  background-color: #a78a51;
-  transition: width 0.3s ease;
-}
-header nav a:hover { color: #a78a51; }
-header nav a:hover::after { width: 100%; }
 
 /* =============================
    SERVICES PAGE
@@ -66,6 +49,7 @@ header nav a:hover::after { width: 100%; }
   padding: 50px 20px;
 }
 
+/* Glow Box */
 .glow-box {
   display: inline-block;
   padding: 10px 20px;
@@ -75,7 +59,7 @@ header nav a:hover::after { width: 100%; }
   margin-bottom: 20px;
 }
 
-/* Heading */
+/* Heading Board */
 .services-page .heading-board {
   width: 100%;
   max-width: 1000px;
@@ -144,7 +128,7 @@ header nav a:hover::after { width: 100%; }
   justify-content: center;
 }
 .services-page .vip-card {
-  width: 650px; /* Longer horizontal */
+  width: 650px;
   background: rgba(255,255,255,0.05);
   padding: 20px;
   border-radius: 15px;
@@ -163,6 +147,36 @@ header nav a:hover::after { width: 100%; }
 }
 .services-page .vip-card p {
   margin: 5px 0 0 0;
+}
+
+/* =============================
+   BOTTOM SCROLL CATEGORIES
+============================= */
+#bottom-categories {
+  position: fixed;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 40px;
+  background: rgba(0,0,0,0.85);
+  padding: 15px 30px;
+  border-radius: 25px;
+  box-shadow: 0 0 30px #a78a51;
+  font-size: 20px;
+  color: #a78a51;
+  text-align: center;
+  transition: all 0.6s ease;
+  z-index: 200;
+}
+#bottom-categories a {
+  color: #fff;
+  font-weight: bold;
+  transition: color 0.3s, transform 0.3s;
+}
+#bottom-categories a:hover {
+  color: #a78a51;
+  transform: scale(1.1);
 }
 
 /* =============================
@@ -188,11 +202,6 @@ header nav a:hover::after { width: 100%; }
   <div class="logo-container">
     <div class="logo">RBM Luxury Salon</div>
   </div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="book.html">Book</a>
-  </nav>
 </header>
 
 <section class="services-page">
@@ -254,12 +263,30 @@ header nav a:hover::after { width: 100%; }
   </div>
 
 </section>
-<!-- ADD THIS AT THE END OF YOUR BODY, AFTER THE OPENING HOURS TABLE -->
+
+<!-- BOTTOM CATEGORY BAR -->
+<div id="bottom-categories">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="book.html">Book</a>
+</div>
 
 <!-- FOOTER -->
 <footer style="text-align:center; padding:20px; color:#a78a51; font-size:16px; text-shadow:0 0 10px #a78a51; background:#111;">
   Website made on 1/1/2026 by @Simon Hawat (+961 81 554 266)
 </footer>
+
+<script>
+// Show bottom categories only on scroll
+window.addEventListener('scroll', function(){
+  const bar = document.getElementById('bottom-categories');
+  if(window.scrollY > 200){
+    bar.style.bottom = '20px';
+  } else {
+    bar.style.bottom = '-100px';
+  }
+});
+</script>
 
 </body>
 </html>
