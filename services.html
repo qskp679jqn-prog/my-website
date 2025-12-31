@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RBM Luxury Salon - Services</title>
+<title>RBM Luxury Salon - Products</title>
 <style>
 /* =============================
    GENERAL
@@ -40,118 +40,133 @@ header .logo-container .logo {
 }
 
 /* =============================
-   SERVICES PAGE
+   PRODUCTS PAGE
 ============================= */
-.services-page {
+.products-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 50px 20px;
 }
 
-/* Glow Box */
-.glow-box {
-  display: inline-block;
-  padding: 10px 20px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 10px;
-  box-shadow: 0 0 20px #a78a51, 0 0 40px #a78a51;
-  margin-bottom: 20px;
-}
-
-/* Heading Board */
-.services-page .heading-board {
+/* GLOWING TITLE BOX */
+.products-page .products-title-box {
   width: 100%;
   max-width: 1000px;
-  height: 200px;
-  margin: 50px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  height: 150px;
   background: rgba(255,255,255,0.05);
-  border-radius: 15px;
   backdrop-filter: blur(5px);
+  border-radius: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 40px #a78a51, 0 0 80px #a78a51;
+  font-size: 36px;
+  color: #a78a51;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
   background-size: cover;
   background-position: center;
-  position: relative;
-  box-shadow: 0 0 30px #a78a51, 0 0 60px #a78a51;
-  transition: transform 0.3s, box-shadow 0.3s;
 }
-.services-page .heading-board:hover {
+.products-page .products-title-box:hover {
   transform: scale(1.03);
-  box-shadow: 0 0 40px #a78a51, 0 0 70px #a78a51;
-}
-.services-page .heading-board h2 {
-  font-size: 42px;
-  margin: 0;
-  color: #a78a51;
-  text-shadow: 0 0 20px #a78a51, 0 0 40px #a78a51;
+  box-shadow: 0 0 60px #a78a51, 0 0 120px #a78a51;
 }
 
-/* Service Cards */
-.services-page .cards-container {
+/* PRODUCT GRID */
+.products-page .products-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
+  width: 100%;
+  max-width: 900px;
   justify-items: center;
 }
-.services-page .service-card {
-  width: 300px;
+
+.product-card {
+  width: 300px; /* keep original size */
   background: rgba(255,255,255,0.05);
-  padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 0 20px #a78a51;
   text-align: center;
+  box-shadow: 0 0 20px #a78a51;
+  padding: 15px;
   transition: transform 0.3s, box-shadow 0.3s;
 }
-.services-page .service-card:hover {
+.product-card:hover {
   transform: scale(1.05);
   box-shadow: 0 0 30px #a78a51, 0 0 60px #a78a51;
 }
-.services-page .service-card img {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 10px;
+.product-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* square images */
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
 }
-.services-page .service-card p {
-  margin: 5px 0 0 0;
+.product-card .price-cart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.product-card .price-cart span {
+  font-weight: bold;
+  color: #a78a51;
+}
+.product-card .price-cart button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 8px;
+  background: #a78a51;
+  color: #000;
+  cursor: pointer;
+  font-weight: bold;
+}
+.product-card .price-cart button:hover {
+  background: #fff;
+  color: #a78a51;
 }
 
-/* VIP Section */
-.services-page .vip-title {
-  margin-top: 50px;
-  margin-bottom: 20px;
-}
-.services-page .vip-cards {
-  display: flex;
+/* MODAL FOR PRODUCT DETAILS */
+#product-modal {
+  display: none;
+  position: fixed;
+  top:0; left:0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
   justify-content: center;
+  align-items: center;
+  z-index: 500;
 }
-.services-page .vip-card {
-  width: 650px;
+#product-modal .modal-content {
   background: rgba(255,255,255,0.05);
   padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 0 25px #a78a51;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 90%;
   text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 40px #a78a51;
+  position: relative;
 }
-.services-page .vip-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 35px #a78a51, 0 0 70px #a78a51;
+#product-modal img {
+  width: 80%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
 }
-.services-page .vip-card img {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 10px;
-}
-.services-page .vip-card p {
-  margin: 5px 0 0 0;
+#product-modal .close-btn {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #a78a51;
 }
 
-/* =============================
-   BOTTOM SCROLL CATEGORIES
-============================= */
+/* BOTTOM CATEGORY BAR */
 #bottom-categories {
   position: fixed;
   bottom: -100px;
@@ -183,14 +198,10 @@ header .logo-container .logo {
    RESPONSIVE
 ============================= */
 @media(max-width:768px){
-  .services-page .cards-container {
+  .products-page .products-grid {
     grid-template-columns: 1fr;
-    width: 100%;
   }
-  .services-page .service-card {
-    width: 90%;
-  }
-  .services-page .vip-card {
+  .product-card {
     width: 90%;
   }
 }
@@ -204,71 +215,35 @@ header .logo-container .logo {
   </div>
 </header>
 
-<section class="services-page">
+<section class="products-page">
 
-  <div class="heading-board glow-box">
-    <h2>RBM Luxury Services</h2>
-  </div>
+  <!-- Title Box -->
+  <div class="products-title-box">Our Products</div>
 
-  <div class="cards-container">
-    <div class="service-card">
-      <img src="hair.png" alt="Hair">
-      <h3>Hair</h3>
-      <p>Haircut, Coloring, Styling</p>
-      <p>Price: $30</p>
-    </div>
-    <div class="service-card">
-      <img src="nails.png" alt="Nails">
-      <h3>Nails</h3>
-      <p>Manicure, Pedicure</p>
-      <p>Price: $25</p>
-    </div>
-    <div class="service-card">
-      <img src="makeup.png" alt="Makeup">
-      <h3>Makeup</h3>
-      <p>Bridal & Party</p>
-      <p>Price: $40</p>
-    </div>
-    <div class="service-card">
-      <img src="skin.png" alt="Skin">
-      <h3>Skin</h3>
-      <p>Facial Treatments</p>
-      <p>Price: $50</p>
-    </div>
-    <div class="service-card">
-      <img src="lashes.png" alt="Lashes">
-      <h3>Lashes</h3>
-      <p>Extensions & Tint</p>
-      <p>Price: $35</p>
-    </div>
-    <div class="service-card">
-      <img src="brows.png" alt="Brows">
-      <h3>Brows</h3>
-      <p>Shaping & Tint</p>
-      <p>Price: $20</p>
-    </div>
-  </div>
-
-  <div class="vip-title glow-box">
-    <h2>VIP</h2>
-  </div>
-
-  <div class="vip-cards">
-    <div class="vip-card">
-      <img src="vip.png" alt="VIP">
-      <h3>VIP Package</h3>
-      <p>All-inclusive luxury experience</p>
-      <p>Price: $150</p>
-    </div>
+  <!-- Products Grid -->
+  <div class="products-grid" id="products-grid">
+    <!-- Products added by JS -->
   </div>
 
 </section>
+
+<!-- PRODUCT MODAL -->
+<div id="product-modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <img id="modal-img" src="" alt="Product">
+    <h3 id="modal-title"></h3>
+    <p id="modal-price"></p>
+    <p id="modal-info"></p>
+  </div>
+</div>
 
 <!-- BOTTOM CATEGORY BAR -->
 <div id="bottom-categories">
   <a href="index.html">Home</a>
   <a href="services.html">Services</a>
   <a href="book.html">Book</a>
+  <a href="products.html">Products</a>
 </div>
 
 <!-- FOOTER -->
@@ -277,7 +252,59 @@ header .logo-container .logo {
 </footer>
 
 <script>
-// Show bottom categories only on scroll
+// Product Data
+const products = [
+  {title:'Hair Serum', price:'$25', info:'High-quality serum for smooth hair.', img:'product1.png'},
+  {title:'Nail Polish', price:'$15', info:'Long-lasting nail color.', img:'product2.png'},
+  {title:'Lipstick', price:'$20', info:'Bright color for perfect lips.', img:'product3.png'},
+  {title:'Face Cream', price:'$35', info:'Hydrating cream for all skin types.', img:'product4.png'},
+  {title:'Lash Kit', price:'$30', info:'Everything for perfect lashes.', img:'product5.png'},
+  {title:'Brow Pencil', price:'$18', info:'Define your eyebrows easily.', img:'product6.png'},
+  {title:'Shampoo', price:'$22', info:'Nourishing shampoo for all hair types.', img:'product7.png'},
+  {title:'Conditioner', price:'$22', info:'Smooth and soft hair after every wash.', img:'product8.png'},
+  {title:'Perfume', price:'$50', info:'Long-lasting fragrance.', img:'product9.png'},
+  {title:'Hair Mask', price:'$28', info:'Deep conditioning treatment.', img:'product10.png'},
+  {title:'Makeup Brush', price:'$20', info:'Professional brush set.', img:'product11.png'},
+  {title:'Facial Toner', price:'$18', info:'Refreshing skin toner.', img:'product12.png'}
+];
+
+// Render Products
+const grid = document.getElementById('products-grid');
+products.forEach((p,i)=>{
+  const card = document.createElement('div');
+  card.className = 'product-card';
+  card.innerHTML = `
+    <img src="${p.img}" alt="${p.title}" onclick="openModal(${i})">
+    <div class="price-cart">
+      <span>${p.price}</span>
+      <button onclick="addToCart(${i})">Add to Cart</button>
+    </div>
+  `;
+  grid.appendChild(card);
+});
+
+// Modal Functions
+function openModal(index){
+  const modal = document.getElementById('product-modal');
+  modal.style.display = 'flex';
+  document.getElementById('modal-img').src = products[index].img;
+  document.getElementById('modal-title').textContent = products[index].title;
+  document.getElementById('modal-price').textContent = products[index].price;
+  document.getElementById('modal-info').textContent = products[index].info;
+}
+function closeModal(){
+  document.getElementById('product-modal').style.display = 'none';
+}
+
+// Cart system
+function addToCart(index){
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cart.push(products[index]);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  alert(products[index].title + " added to cart!");
+}
+
+// Show bottom categories on scroll
 window.addEventListener('scroll', function(){
   const bar = document.getElementById('bottom-categories');
   if(window.scrollY > 200){
